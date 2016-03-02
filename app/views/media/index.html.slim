@@ -1,0 +1,7 @@
+- @media.each do |medium|
+  .medium
+    .medium_name = link_to medium.name, medium
+    .owner
+      = t(:owner)
+      ' :
+      = medium.user.email
