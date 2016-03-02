@@ -268,7 +268,29 @@ ru:
   activerecord:
     models:
       medium: 'Медиа'
+      picture:
+        one: 'Изображение'
+        many: 'Изображения'
+      link:
+        one: 'Ссылка'
+        many: 'Ссылки'
     attributes:
       medium:
         user_id: 'Пользователь'
         name: 'Название'
+      picture:
+        user_id: 'Пользователь'
+        image: 'Изображение'
+        image_file_size: 'Размер изображения'
+        image_content_type: 'Тип изображения'
+      link:
+        user_id: 'Пользователь'
+        url: 'Ссылка'
+    errors:
+      models:
+        picture:
+          attributes:
+            image_file_size:
+              in_between: 'слишком большой'
+            image:
+              in_between: 'не может быть больше 3Мб'

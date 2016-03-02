@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     get :user, on: :collection
   end
 
+  resources :links, only: [:create, :destroy]
+  resources :pictures, only: [:create, :destroy]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

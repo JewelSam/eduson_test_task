@@ -1,0 +1,27 @@
+h3= t('activerecord.models.picture.many')
+
+- @medium.pictures.each do |picture|
+  .picture
+    = image_tag picture.image.url(:thumb)
+    .actions
+      = link_to t(:destroy), picture, method: :delete if can?(:destroy, picture)
+
+- if can?(:create, Picture) && can?(:update, @medium)
+  = form_for Picture.new do |f|
+    = f.hidden_field :medium_id, value: @medium.id
+    = f.file_field :image, required: true
+    = f.submit
+
+h3= t('activerecord.models.link.many')
+
+- @medium.links.each do |link|
+  .link
+    = link_to link.url, link.url, target: '_blank'
+    .actions
+      = link_to t(:destroy), link, method: :delete if can?(:destroy, link)
+
+- if can?(:create, Link) && can?(:update, @medium)
+  = form_for Link.new do |f|
+    = f.hidden_field :medium_id, value: @medium.id
+    = f.text_field :url, required: true
+    = f.submit

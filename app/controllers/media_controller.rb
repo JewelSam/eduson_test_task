@@ -1,8 +1,12 @@
 class MediaController < ApplicationController
-  before_action :authenticate_user!, :except => :index
+  before_action :authenticate_user!, :except => [:index, :show]
 
   def index
     @media = Medium.includes(:user).all
+  end
+
+  def show
+    @medium = Medium.find(params[:id])
   end
 
   def user

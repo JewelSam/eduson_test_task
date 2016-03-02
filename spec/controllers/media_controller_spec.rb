@@ -104,4 +104,19 @@ RSpec.describe MediaController, :type => :controller do
       expect(response).to redirect_to('where_i_came_from')
     end
   end
+
+  describe 'GET show' do
+    before do
+      @medium = create(:medium)
+      get :show, id: @medium.id
+    end
+
+    it 'assigns @medium' do
+      expect(assigns(:medium)).to eq(@medium)
+    end
+
+    it 'renders the show template' do
+      expect(response).to render_template('show')
+    end
+  end
 end
