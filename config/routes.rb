@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   root 'media#index'
 
-  resources :media, except: :edit
+  resources :media, except: :edit do
+    get :user, on: :collection
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

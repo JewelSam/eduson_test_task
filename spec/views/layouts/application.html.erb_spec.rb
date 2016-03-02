@@ -31,8 +31,12 @@ describe 'layouts/application.html.slim' do
       expect(page).to have_link(nil, href: '/users/sign_out')
     end
 
-    it 'displays only one link' do
-      expect(page).to have_selector('header a', count: 1)
+    it 'displays links of media collections' do
+      expect(page).to have_link(nil, href: '/media/user')
+    end
+
+    it 'displays only two links' do
+      expect(page).to have_selector('header a', count: 2)
     end
   end
 

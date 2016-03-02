@@ -1,0 +1,10 @@
+- @media.each do |medium|
+  .medium
+    = link_to medium.name, medium
+    .actions
+      = link_to t(:destroy), medium, method: :delete if can? :destroy, medium
+
+- if can? :create, Medium
+  = form_for Medium.new do |f|
+    = f.text_field :name, required: true
+    = f.submit

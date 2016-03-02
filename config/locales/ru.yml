@@ -263,3 +263,12 @@ ru:
   logout: 'Выйти'
   login: 'Войти'
   sign_up: 'Регистрация'
+  destroy: 'Удалить'
+  success: 'Успешно'
+  activerecord:
+    models:
+      medium: 'Медиа'
+    attributes:
+      medium:
+        user_id: 'Пользователь'
+        name: 'Название'
