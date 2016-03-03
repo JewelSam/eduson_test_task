@@ -1,7 +1,7 @@
 - @media.each do |medium|
-  .medium
-    .medium_name = link_to medium.name, medium
-    .owner
+  .medium.panel.panel-default
+    .medium_name.panel-heading = link_to medium.name, medium
+    .owner.panel-body
       = t(:owner)
       ' :
       = medium.user.email

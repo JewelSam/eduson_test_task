@@ -19,7 +19,7 @@ describe 'devise/registrations/new.html.erb' do
         fill_in 'Email', with: @email
         fill_in 'Password', with: @password
         fill_in 'Password confirmation', with: @password
-        click_on 'Sign up'
+        click_on t(:sign_up)
       end
     end
 
@@ -38,7 +38,7 @@ describe 'devise/registrations/new.html.erb' do
       within('#new_user') do
         fill_in 'Email', with: @email
         fill_in 'Password', with: @password
-        click_on 'Log in'
+        click_on t(:login)
       end
       expect(page).to have_content(t(:logout))
     end

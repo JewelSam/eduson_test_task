@@ -7,6 +7,10 @@ describe 'layouts/application.html.slim' do
       visit '/'
     end
 
+    it 'displays link of main page' do
+      expect(page).to have_link(nil, href: '/')
+    end
+
     it 'displays link of login' do
       expect(page).to have_link(nil, href: '/users/sign_in')
     end
@@ -15,8 +19,8 @@ describe 'layouts/application.html.slim' do
       expect(page).to have_link(nil, href: '/users/sign_up')
     end
 
-    it 'displays only two links' do
-      expect(page).to have_selector('header a', count: 2)
+    it 'displays only three links' do
+      expect(page).to have_selector('header a', count: 3)
     end
   end
 
@@ -27,6 +31,10 @@ describe 'layouts/application.html.slim' do
       visit '/'
     end
 
+    it 'displays link of main page' do
+      expect(page).to have_link(nil, href: '/')
+    end
+
     it 'displays link of logout' do
       expect(page).to have_link(nil, href: '/users/sign_out')
     end
@@ -35,8 +43,8 @@ describe 'layouts/application.html.slim' do
       expect(page).to have_link(nil, href: '/media/user')
     end
 
-    it 'displays only two links' do
-      expect(page).to have_selector('header a', count: 2)
+    it 'displays only three links' do
+      expect(page).to have_selector('header a', count: 3)
     end
   end
 

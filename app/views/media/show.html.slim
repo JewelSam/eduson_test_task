@@ -1,27 +1,45 @@
 h3= t('activerecord.models.picture.many')
 
-- @medium.pictures.each do |picture|
-  .picture
-    = image_tag picture.image.url(:thumb)
-    .actions
-      = link_to t(:destroy), picture, method: :delete if can?(:destroy, picture)
+.row
+  - @medium.pictures.each do |picture|
+    .col-md-3
+      .picture.well.text-center
+        = image_tag picture.image.url(:thumb)
+        .actions
+          - if can?(:destroy, picture)
+            => link_to picture, method: :delete, class: 'btn btn-default' do
+              span.glyphicon.glyphicon-trash>
+              = t(:destroy)
+
+.clearfix
 
 - if can?(:create, Picture) && can?(:update, @medium)
-  = form_for Picture.new do |f|
+  = form_for Picture.new, html: {class: 'form-inline pull-right'} do |f|
     = f.hidden_field :medium_id, value: @medium.id
-    = f.file_field :image, required: true
-    = f.submit
+    .input-group
+      = f.file_field :image, required: true, class: 'form-control'
+      span.input-group-btn= f.submit class: 'btn btn-info'
+
+.clearfix
 
 h3= t('activerecord.models.link.many')
 
-- @medium.links.each do |link|
-  .link
-    = link_to link.url, link.url, target: '_blank'
-    .actions
-      = link_to t(:destroy), link, method: :delete if can?(:destroy, link)
+ul.list-group
+  - @medium.links.each do |link|
+    li.list-group-item.link
+      = link_to link.url, link.url, target: '_blank'
+      span.pull-right.actions
+        - if can?(:destroy, link)
+          => link_to link, method: :delete do
+            span.glyphicon.glyphicon-trash>
+            = t(:destroy)
+      .clearfix
 
 - if can?(:create, Link) && can?(:update, @medium)
-  = form_for Link.new do |f|
+  = form_for Link.new, html: {class: 'form-inline pull-right'} do |f|
     = f.hidden_field :medium_id, value: @medium.id
-    = f.text_field :url, required: true
-    = f.submit
+    .input-group
+      = f.text_field :url, required: true, class: 'form-control'
+      span.input-group-btn= f.submit class: 'btn btn-info'
+
+.clearfix

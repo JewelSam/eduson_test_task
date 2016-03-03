@@ -8,20 +8,39 @@
 </head>
 <body>
 
-<header>
-  <% if user_signed_in? %>
-      <%= link_to t(:my_collections), user_media_path %>
-      <%= link_to t(:logout), destroy_user_session_path, method: :delete %>
-  <% else %>
-      <%= link_to t(:login), new_user_session_path %>
-      <%= link_to t(:sign_up), new_user_registration_path %>
+<div class="container">
+  <header>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to '', root_path, class: 'navbar-brand glyphicon glyphicon-home' %>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+              <li><%= link_to t(:my_collections), user_media_path %></li>
+              <li><%= link_to t(:logout), destroy_user_session_path, method: :delete %></li>
+          <% else %>
+              <li><%= link_to t(:login), new_user_session_path %></li>
+              <li><%= link_to t(:sign_up), new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+
+  <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
   <% end %>
-</header>
+  <% if alert %>
+      <p class="alert alert-info"><%= alert %></p>
+  <% end %>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+  <%= yield %>
+</div>
 
-<%= yield %>
+<footer>
+</footer>
 
 </body>
 </html>

@@ -35,6 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'devise-i18n'
+gem 'devise-bootstrap-views'
 gem "paperclip", "~> 4.3"
 gem "cancan"
 
